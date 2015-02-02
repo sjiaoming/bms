@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+  <class table="t_salescontract" name="com.shtz.model.SalesContract">
+    <id access="field" name="id">
+      <generator class="native"/>
+    </id>
+    <property name="contractNum" access="field" unique="true" not-null="true"/>
+    <property name="signingDate" access="field" not-null="true"/>
+    <property name="reportCompId_sc" access="field"/>
+    <property name="reportCompName_sc" access="field"/>
+    <property name="signComp" access="field"/>
+    <property name="signFlag" access="field" not-null="true"/>
+    <property name="qualityMoney" access="field"/>
+    <property name="qualityDate" access="field"/>
+    <property name="contractMoney" access="field"/>
+    <property name="contractReceivedMoney" access="field"/>
+    <property name="totalcontractReceivedMoney" access="field"/>
+    <property name="contractReceivableMoney" access="field"/>
+    <set inverse="true" access="field" name="plan">
+      <key column="sid"/>
+      <one-to-many class="com.shtz.model.Plan"/>
+    </set>
+    <property name="orgId" access="field" not-null="true"/>
+    <property name="orgName" access="field" not-null="true"/>
+    <property name="totalContractInvoiceMoney" access="field"/>
+    <set inverse="true" access="field" name="billing">
+      <key column="sid"/>
+      <one-to-many class="com.shtz.model.Billing"/>
+    </set>
+    <many-to-one column="uid" access="field" name="user"/>
+    <many-to-one column="psid" access="field" name="person"/>
+    <property name="salesContractName" access="field"/>
+    <property name="arrivalAddress" access="field"/>
+  </class>
+</hibernate-mapping>

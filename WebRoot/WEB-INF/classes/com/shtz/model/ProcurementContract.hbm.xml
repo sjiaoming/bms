@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+  <class table="t_procurementcontract" name="com.shtz.model.ProcurementContract">
+    <id access="field" name="id">
+      <generator class="native"/>
+    </id>
+    <property name="contractNum" access="field" unique="true" not-null="true"/>
+    <property name="suppliersId" access="field" not-null="true"/>
+    <property name="suppliersName" access="field" not-null="true"/>
+    <property name="contractExecutionWay" access="field"/>
+    <property name="advance" access="field"/>
+    <property name="orgId" access="field" not-null="true"/>
+    <property name="orgName" access="field" not-null="true"/>
+    <property name="signingDate" access="field" not-null="true"/>
+    <property name="arrivalDate" access="field" not-null="true"/>
+    <property name="totalMoney" access="field" not-null="true"/>
+    <property name="procurementWay" access="field" not-null="true"/>
+    <property name="qualityMoney" access="field"/>
+    <property name="qualityDate" access="field"/>
+    <property name="noPayment" access="field"/>
+    <property name="shouldPayment" access="field"/>
+    <property name="remark" access="field"/>
+    <property name="payed" access="field"/>
+    <set inverse="true" access="field" name="plan">
+      <key column="pid"/>
+      <one-to-many class="com.shtz.model.Plan"/>
+    </set>
+    <set inverse="true" access="field" name="contractCredit">
+      <key column="cid"/>
+      <one-to-many class="com.shtz.model.ContractCredit"/>
+    </set>
+    <many-to-one column="uid" access="field" name="user"/>
+    <many-to-one column="psid" access="field" name="person"/>
+    <property name="contractName" access="field"/>
+    <property name="reportCompId_pc" access="field"/>
+    <property name="reportCompName_pc" access="field"/>
+  </class>
+</hibernate-mapping>

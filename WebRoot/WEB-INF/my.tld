@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="GBK" ?>
+
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd"
+	version="2.0">
+ 
+	<display-name>JSTL functions</display-name>
+	<tlib-version>1.1</tlib-version>
+	<short-name>my</short-name>
+	<uri>http://www.oa.com/jsp/jstl/functions</uri>
+
+	<function>
+		<name>method</name>
+		<function-class>com.shtz.util.SecurityFunction</function-class>
+		<function-signature>
+			boolean method(int, java.lang.String, int)
+		</function-signature>
+	</function>
+
+</taglib>

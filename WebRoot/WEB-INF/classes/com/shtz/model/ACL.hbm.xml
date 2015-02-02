@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+  <class table="t_acl" name="com.shtz.model.ACL">
+    <id access="field" name="id">
+      <generator class="native"/>
+    </id>
+    <property name="principalType" access="field" not-null="true"/>
+    <property name="principalSn" access="field" not-null="true"/>
+    <property name="resourceSn" access="field" not-null="true"/>
+    <property name="aclState" access="field" not-null="true"/>
+    <property name="extendsState" access="field" not-null="true"/>
+  </class>
+</hibernate-mapping>

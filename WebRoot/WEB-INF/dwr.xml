@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dwr PUBLIC "-//GetAhead Limited//DTD Direct Web Remoting 3.0//EN" "http://getahead.org/dwr/dwr30.dtd">
+
+<dwr>
+
+  <allow>
+  
+  	<create creator="spring" javascript="aclManager">
+  		<param name="beanName" value="aclService"></param>
+  	</create>
+	<create creator="spring" javascript="planManager">
+  		<param name="beanName" value="planService"></param>
+  	</create>
+  	<create creator="spring" javascript="procurementContractManager">
+  		<param name="beanName" value="procurementContractService"></param>
+  	</create>
+  	<create creator="spring" javascript="procurementCheckManager">
+  		<param name="beanName" value="procurementCheckService"></param>
+  	</create>
+  	<create creator="spring" javascript="seekSourceManager">
+  		<param name="beanName" value="seekSourceService"></param>
+  	</create>
+  	<create creator="spring" javascript="salesContractManager">
+  		<param name="beanName" value="salesContractService"></param>
+  	</create>
+  	<create creator="spring" javascript="loginManager">
+  		<param name="beanName" value="loginAction"></param>
+  	</create>
+  	<create creator="spring" javascript="loginparam">
+  		<param name="beanName" value="loginAction"></param>
+  	</create>
+  </allow>
+
+</dwr>

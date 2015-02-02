@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+  <class table="t_check" name="com.shtz.model.Check">
+    <id access="field" name="id">
+      <generator class="native"/>
+    </id>
+    <many-to-one column="psid" access="field" name="person"/>
+    <property name="opinion" access="field"/>
+    <many-to-one column="pid" access="field" name="plan"/>
+    <many-to-one column="pcid" access="field" name="pc"/>
+    <many-to-one column="ssid" access="field" name="seekSource"/>
+    <property name="checkDate" access="field"/>
+    <property name="checkType" access="field"/>
+    <property name="checkStatus" access="field"/>
+  </class>
+</hibernate-mapping>

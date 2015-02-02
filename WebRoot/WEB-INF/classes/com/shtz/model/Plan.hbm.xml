@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+  <class table="t_plan" name="com.shtz.model.Plan">
+    <id access="field" name="id">
+      <generator class="native"/>
+    </id>
+    <property name="planNum" access="field"/>
+    <property name="itemType" access="field"/>
+    <property name="itemsNum" access="field"/>
+    <property name="facilityNameAndNum" access="field"/>
+    <property name="itemsName" access="field"/>
+    <property name="modelType" access="field" />
+    <property name="material" access="field"/>
+    <property name="standardNum" access="field"/>
+    <property name="unit" access="field"/>
+    <property name="quantity" access="field"/>
+    <property name="budgetPrice" access="field"/>
+    <property name="budgetMoney" access="field"/>
+    <property name="demandDept" access="field"/>
+    <property name="arrivalDate" access="field"/>
+    <property name="checkItemNum" access="field"/>
+    <property name="useFor" access="field"/>
+    <property name="originComp" access="field"/>
+    <property name="remark" access="field"/>
+    <property name="model" access="field"/>
+    <property name="reportComp" access="field"/>
+    <property name="reportCompId" access="field"/>
+    <property name="planReceiptDate" access="field"/>
+    <property name="contractNum" access="field"/>
+    <property name="arrivalSite" access="field"/>
+    <property name="procurementFlag" access="field"/>
+    <property name="procurementWay" access="field"/>
+    <many-to-one column="pwcid" access="field" name="pc"/>
+    <property name="procurementDate" access="field"/>
+    <property name="procurementRemark" access="field"/>
+    <property name="searchAnnouncedDate" access="field"/>
+    <property name="searchDate" access="field"/>
+    <property name="contractExecutionWay" access="field"/>
+    <property name="contractMoney" access="field"/>
+    <property name="procurementPrice" access="field"/>
+    <property name="procurementMoney" access="field"/>
+    <property name="salesMoney" access="field"/>
+    <property name="salesRatio" access="field"/>
+    <property name="salesPrice" access="field"/>
+    <one-to-one name="change" access="field" property-ref="plan" cascade="all"/>
+    <many-to-one column="pid" cascade="save-update" access="field" name="procurementContract"/>
+    <many-to-one column="sid" access="field" name="salesContract"/>
+    <set inverse="true" access="field" name="arrivalItems">
+      <key column="aid"/>
+      <one-to-many class="com.shtz.model.ArrivalItems"/>
+    </set>
+    <many-to-one column="oid" access="field" name="org"/>
+    <many-to-one column="psuid" access="field" name="supplier" cascade="none"/>
+    <many-to-one column="uid" access="field" name="user"/>
+    <many-to-one column="psid" access="field" name="person"/>
+    <many-to-one column="pdid" access="field" name="director"/>
+    <many-to-one column="pmid" access="field" name="manager"/>
+    <property name="planStatus" access="field"/>
+    <property name="checkStatus" access="field"/>
+    <property name="opinion" access="field"/>
+    <set inverse="true" access="field" name="children">
+      <key column="pcid"/>
+      <one-to-many class="com.shtz.model.Plan"/>
+    </set>
+    <set inverse="true" access="field" name="check" cascade="all-delete-orphan">
+      <key column="pid"/>
+      <one-to-many class="com.shtz.model.Check"/>
+    </set>
+    <many-to-one column="pcid" access="field" not-found="ignore" name="parent"/>
+    <property name="procurementSigningleDate" access="field"/>
+    <property name="arrivalNumTotal" access="field"/>
+    <property name="acceptanceNumTotal" access="field"/>
+    <property name="arrivalMoneyTotal" access="field"/>
+    <property name="acceptanceMoneyTotal" access="field"/>
+    <set inverse="true" access="field" name="billingDetail">
+      <key column="plan_id"/>
+      <one-to-many class="com.shtz.model.BillingDetail"/>
+    </set>
+    <property name="arrivalAddress" access="field"/>
+    <property name="dType" access="field"/>
+    <property name="zType" access="field"/>
+    <property name="xType" access="field"/>
+    
+    
+    <property name="contact" access="field"/>
+    <property name="gsperson" access="field"/>
+    <property name="xmperson" access="field"/>
+    <property name="Atype" access="field"/>
+    <property name="planRowNum" access="field"/>
+    <property name="planContent" access="field"/>
+    <property name="projectName" access="field"/>
+    <property name="groupStatus" access="field"/>
+    <property name="planIssuedDate" access="field"/>
+    <property name="seekSourceStatus" access="field"/>
+    <many-to-one column="gid" access="field" name="group"/>
+  </class>
+</hibernate-mapping>

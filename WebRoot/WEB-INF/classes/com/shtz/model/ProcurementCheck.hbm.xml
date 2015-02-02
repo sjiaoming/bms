@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+  <class table="t_procurementCheck" name="com.shtz.model.ProcurementCheck">
+    <id access="field" name="id">
+      <generator class="native"/>
+    </id>
+    <property name="checkNum" access="field"/>
+    <property name="supplierIds" access="field"/>
+    <property name="submitDate" access="field"/>
+    <property name="checkStatus" access="field"/>
+    <property name="procurementName" access="field"/>
+    <property name="procurementWay" access="field"/>
+    <property name="opinion" access="field"/>
+    <property name="memo" access="field"/>
+    <property name="caseNum" access="field"/>
+    <property name="packageNum" access="field"/>
+    <property name="finishSeekSource" access="field"/>
+    <one-to-one name="seekSource" access="field" property-ref="pc" cascade="all"/>
+    <many-to-one column="pid" access="field" name="person"></many-to-one>
+    <many-to-one column="pdid" access="field" name="director"></many-to-one>
+    <many-to-one column="pmid" access="field" name="manager"></many-to-one>
+    <many-to-one column="pcid" access="field" name="chairMan"></many-to-one>
+    <many-to-one column="piid" access="field" name="innerContral"/>
+    <many-to-one column="bgid" access="field" name="group"/>
+    <many-to-one column="ssid" access="field" name="seekSourceOperator"/>
+    <property name="groupStatus" access="field"/>
+    <set inverse="true" access="field" name="plans" order-by="modelType asc,quantity asc" lazy="false">
+      <key column="pwcid"/>
+      <one-to-many class="com.shtz.model.Plan"/>
+    </set>
+    <set inverse="true" access="field" name="checks" order-by="id desc">
+      <key column="pcid"/>
+      <one-to-many class="com.shtz.model.Check"/>
+    </set>
+  </class>
+</hibernate-mapping>
