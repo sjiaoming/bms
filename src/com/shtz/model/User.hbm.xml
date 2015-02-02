@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+  <class table="t_user" name="com.shtz.model.User">
+    <id access="field" name="id">
+      <generator class="native"/>
+    </id>
+    <property name="username" access="field" unique="true" not-null="true"/>
+    <property name="password" access="field" not-null="true"/>
+    <property name="createTime" access="field" update="false"/>
+    <property name="expireTime" access="field"/>
+    <property name="auth" access="field"/>
+    <many-to-one unique="true" access="field" name="person"/>
+    <set inverse="true" access="field" name="plans">
+      <key column="uid"/>
+      <one-to-many class="com.shtz.model.Plan"/>
+    </set>
+    <set inverse="true" access="field" name="salesContracts">
+      <key column="uid"/>
+      <one-to-many class="com.shtz.model.SalesContract"/>
+    </set>
+    <set inverse="true" access="field" name="procurementContracts">
+      <key column="uid"/>
+      <one-to-many class="com.shtz.model.ProcurementContract"/>
+    </set>
+  </class>
+</hibernate-mapping>

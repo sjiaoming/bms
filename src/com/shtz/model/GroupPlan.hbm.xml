@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+  <class table="t_groupPlan" name="com.shtz.model.GroupPlan">
+    <id access="field" name="id">
+      <generator class="native"/>
+    </id>
+    <many-to-one column="gId" access="field" name="group"/>
+    <many-to-one column="pId" access="field" name="plan"/>
+  </class>
+</hibernate-mapping>

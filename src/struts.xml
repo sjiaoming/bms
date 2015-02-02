@@ -1,0 +1,760 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	
+	<package name="sjm" extends="struts-default">
+		<global-results>
+			<result name="login">/index.jsp</result>
+		</global-results>
+		<action name="org" class="orgAction">
+			<result name="success">/org/index.jsp</result>
+			<result name="select">/org/select.jsp</result>
+		</action>
+		<action name="add_input" class="orgAction" method="add">
+			<result name="success">/org/add_input.jsp</result>
+		</action>
+		<action name="add" class="addAction"></action>
+		<action name="del" class="delAction"></action>
+
+		<action name="person" class="personAction">
+			<result name="success">/systemManagement/personMg/index.jsp</result>
+		</action>
+		<action name="initperson" class="personAction" method="initPerson">
+			<result name="initperson_success">/systemManagement/personMg/index.jsp</result>
+		</action>
+		<action name="initAddPerson" class="personAction" method="initAddPerson">
+			<result name="success">/systemManagement/personMg/add_input.jsp</result>
+		</action>
+		<action name="toAdd" class="personAction" method="add_input">
+			<result name="success">/person/add_input.jsp</result>
+		</action>
+		<action name="delPerson" class="personAction" method="delete">
+			<result name="del_success" type="redirectAction">
+				 <param name="actionName">person</param>
+			</result>
+		</action>
+		<action name="addPerson" class="personAction" method="add">
+			<result name="add_success">/systemManagement/personMg/index.jsp</result>
+		</action>
+		<action name="modify_person_input" class="personAction" method="modify_person_input">
+			<result name="modify_person_input_success">/systemManagement/personMg/modify_person.jsp</result>
+		</action>
+		<action name="update_person" class="personAction" method="update_person">
+			<result name="update_person_success">/systemManagement/personMg/index.jsp</result>
+		</action>
+		
+		
+		
+		<action name="module" class="moduleAction">
+			<result name="success">/systemManagement/moduleMg/index.jsp</result>
+		</action>
+		<action name="getModuleName" class="moduleAction" method="getModuleName">
+			<result name="getModules_success">/systemManagement/moduleMg/index.jsp</result>
+		</action>
+		<action name="add_module" class="moduleAction" method="add_module">
+			<result name="success">/systemManagement/moduleMg/index.jsp</result>
+		</action>
+		<action name="del_module" class="moduleAction" method="del_module">
+			<result name="del_success" type="redirectAction">
+				 <param name="actionName">module</param>
+				  <param name="name">${name}</param>
+				  <param name="moduleId">${moduleId}</param>
+			</result>
+		</action>
+		<action name="modify_module_input" class="moduleAction" method="modify_module_input">
+			<result name="modify_success">/systemManagement/moduleMg/modify_input.jsp</result>
+		</action>
+		<action name="update_module" class="moduleAction" method="update_module">
+			<result name="success">/systemManagement/moduleMg/index.jsp</result>
+		</action>
+
+		<action name="initOrganization" class="organizationAction">
+			<result name="success">/systemManagement/organizationMg/organizationindex.jsp</result>
+		</action>
+		<action name="organization" class="organizationAction" method="findOrganizationAndChild">
+			<result name="success">/systemManagement/organizationMg/organizationindex.jsp</result>
+		</action>
+		<action name="add_organization" class="organizationAction" method="add_organization">
+			<result name="add_success">/systemManagement/organizationMg/organizationindex.jsp</result>
+		</action>
+		<action name="new_organization" class="organizationAction" method="new_organization">
+			<result name="addnew_success">/systemManagement/organizationMg/organizationindex.jsp</result>
+		</action>
+		<action name="del_organization" class="organizationAction" method="del_organization">
+			<result name="del_success">/systemManagement/organizationMg/organizationindex.jsp</result>
+		</action>
+		<action name="toNewOrg" class="organizationAction" method="toNewOrg">
+			<result name="toNewOrg">/systemManagement/organizationMg/new_input.jsp</result>
+		</action>
+		<action name="exportEx" class="organizationAction" method="exportEx">
+			<result name="success">/systemManagement/organizationMg/organizationindex.jsp</result>
+		</action>
+		
+		
+		<action name="modify_org_input" class="organizationAction" method="modify_org_input">
+			<result name="modify_input_success">/systemManagement/organizationMg/modify_org_input.jsp</result>
+		</action>
+		<action name="update_org" class="organizationAction" method="update_organization">
+			<result name="success">/systemManagement/organizationMg/organizationindex.jsp</result>
+		</action>
+		<action name="usercomp" class="userCompAction">
+			<result name="success">/systemManagement/userCompMg/index.jsp</result>
+		</action>
+		<action name="initusecomp" class="userCompAction" method="initusecomp">
+			<result name="initusecomp_success">/systemManagement/userCompMg/index.jsp</result>
+		</action>
+		<action name="add_usercomp" class="userCompAction" method="add_usercomp">
+			<result name="success">/systemManagement/userCompMg/index.jsp</result>
+		</action>
+		<action name="del_useComp" class="userCompAction" method="del_useComp">
+			<result name="del_success">/systemManagement/userCompMg/index.jsp</result>
+		</action>
+		<action name="modify_userComp_input" class="userCompAction" method="modify_userComp_input">
+			<result name="modify_input_success">/systemManagement/userCompMg/modify_usecomp_input.jsp</result>
+		</action>
+		<action name="update_usecomp" class="userCompAction" method="update_usecomp">
+			<result name="success">/systemManagement/userCompMg/index.jsp</result>
+		</action>
+		
+		<action name="suppliers" class="suppliersAction">
+			<result name="success">/systemManagement/suppliersMg/index.jsp</result>
+		</action>
+		<action name="initsuppliers" class="suppliersAction" method="initsuppliers">
+			<result name="initsuppliers_success">/systemManagement/suppliersMg/index.jsp</result>
+		</action>
+		<action name="add_suppliers" class="suppliersAction" method="add_suppliers">
+			<result name="success">/systemManagement/suppliersMg/index.jsp</result>
+		</action>
+		<action name="del_suppliers" class="suppliersAction" method="del_suppliers">
+			<result name="del_success">/systemManagement/suppliersMg/index.jsp</result>
+		</action>
+		<action name="modify_suppliers_input" class="suppliersAction" method="modify_suppliers_input">
+			<result name="modify_input_success">/systemManagement/suppliersMg/modify_suppliers_input.jsp</result>
+		</action>
+		<action name="update_suppliers" class="suppliersAction" method="update_suppliers">
+			<result name="success">/systemManagement/suppliersMg/index.jsp</result>
+		</action>
+
+
+		<action name="role" class="roleAction">
+			<result name="success">/systemManagement/roleMg/index.jsp</result>
+		</action>
+		<action name="add_role" class="roleAction" method="add_role">
+			<result name="add_role_success">/systemManagement/roleMg/index.jsp</result>
+		</action>
+		<action name="del_role" class="roleAction" method="del_role">
+			<result name="del_success" type="redirectAction">
+				 <param name="actionName">role</param>
+			</result>
+		</action>
+
+		<action name="user" class="userAction">
+			<result name="success">/systemManagement/userMg/index.jsp</result>
+			<result name="auth_search_success">/systemManagement/authorityMg/auth_index.jsp</result>
+			<result name="data_search_success">/systemManagement/authorityMg/data_index.jsp</result>
+		</action>
+		<action name="add_user" class="userAction" method="add_user">
+			<result name="add_success">/systemManagement/userMg/index.jsp</result>
+		</action>
+		<action name="modify_myPwd" class="userAction" method="modify_myPwd">
+		</action>
+		
+		<action name="del_user" class="userAction" method="del_user">
+			<result name="del_success">/systemManagement/userMg/index.jsp</result>
+		</action>
+		<action name="modify_user" class="userAction" method="modify_user">
+			<result name="modify_success">/systemManagement/userMg/index.jsp</result>
+		</action>
+		<action name="userRole" class="userAction" method="userRole">
+			<result name="success">/systemManagement/authorityMg/user_role_list.jsp</result>
+		</action>
+		<action name="toUserRole" class="userAction" method="toUserRole">
+			<result name="success">/systemManagement/authorityMg/user_role_input.jsp</result>
+		</action>
+		<action name="add_userRole" class="userAction" method="add_userRole">
+			<result name="add_success">/systemManagement/authorityMg/user_role_list.jsp</result>
+		</action>
+		<action name="delxx" class="userAction" method="del_userRole">
+			<result name="del_success">/systemManagement/authorityMg/user_role_list.jsp</result>
+		</action>
+
+		<action name="acl" class="aclAction">
+			<result name="success">/systemManagement/authorityMg/index.jsp</result>
+		</action>
+
+		<action name="login" class="loginAction">
+			<result name="success">/main.html</result>
+			<result name="login">/login.jsp</result>
+		</action>
+
+		<action name="outlook" class="outlookAction">
+			<result name="success">/lesson/left_tree.jsp</result>
+		</action>
+
+		<action name="main" class="mainAction">
+			<result name="success">/main.jsp</result>
+		</action>
+
+		<action name="plan" class="planAction">
+			<result name="success">/businessManagement/planMg/index.jsp</result>
+		</action>
+		<!-- add by yao 20140626 -->
+		<action name="settlePlans" class="planGroupAction" method="searchGroupPlans">
+			<result name="success">/businessManagement/planMg/settlePlansIndex.jsp</result>
+		</action>
+		<action name="initSetProcurementPage" class="planGroupAction" method="initSetProcurementPage">
+			<result name="success">/businessManagement/groupMg/setProcurementPage.jsp</result>
+		</action>
+		<action name="initSetProcurementOperator" class="planGroupAction" method="initSetProcurementOperator">
+			<result name="success">/businessManagement/groupMg/setProcurementOperator.jsp</result>
+		</action>
+		<action name="initSetProcurementOperatorPage" class="planGroupAction" method="initProcurementOperatorPage">
+			<result name="success">/businessManagement/groupMg/setProcurementOperatorPage.jsp</result>
+		</action>
+		<action name="searchGroupProcurements" class="planGroupAction" method="searchGroupProcurements">
+			<result name="success">/businessManagement/groupMg/setProcurementPage.jsp</result>
+		</action>
+		<action name="searchOperatorProcurements" class="planGroupAction" method="searchOperatorProcurements">
+			<result name="success">/businessManagement/groupMg/setProcurementOperatorPage.jsp</result>
+		</action>
+		<action name="loadGroup" class="planGroupAction" method="loadGroup">
+			<result name="success">/businessManagement/groupMg/groupDetail.jsp</result>
+			<result name="direct_success">/businessManagement/groupMg/directGroupDetail.jsp</result>
+			<result name="manager_success">/businessManagement/groupMg/managerGroupDetail.jsp</result>
+		</action>
+		<action name="searchGroups" class="planGroupAction" method="searchGroups">
+			<result name="success">/businessManagement/groupMg/index.jsp</result>
+		</action>
+		<action name="searchDirectGroups" class="planGroupAction" method="searchDirectGroups">
+			<result name="success">/businessManagement/groupMg/directLeaderCheckIndex.jsp</result>
+		</action>
+		<action name="searchManagerGroups" class="planGroupAction" method="searchManagerGroups">
+			<result name="success">/businessManagement/groupMg/generalManagerCheckIndex.jsp</result>
+		</action>
+		<action name="saveProcurementGroup" class="planGroupAction" method="saveProcurementGroup">
+			<result name="success" type="redirectAction">
+				<param name="actionName">searchGroupProcurements</param>
+			</result>
+		</action>
+		<action name="modifyGroupProcurementsPerson" class="planGroupAction" method="modifyGroupProcurementsPerson">
+			<result name="success">/businessManagement/groupMg/setProcurementOperatorPage.jsp</result>
+		</action>
+		<action name="savePlanGroup" class="planGroupAction" method="savePlanGroup">
+			<result name="success" type="redirectAction">
+				<param name="actionName">settlePlans</param>
+				<param name="plan.reportComp">${plan.reportComp}</param>
+				<param name="plan.planNum">${plan.planNum}</param>
+				<param name="plan.gsperson">${plan.gsperson}</param>
+				<param name="sDate">${sDate}</param>
+				<param name="eDate">${eDate}</param>
+			</result>
+		</action>
+		<action name="doCheckGroupPlans" class="planGroupAction" method="doCheckGroupPlans">
+			<result name="success">/businessManagement/groupMg/index.jsp</result>
+		</action>
+		<action name="doDirectCheckGroupPlans" class="planGroupAction" method="doDirectCheckGroupPlans">
+			<result name="success">/businessManagement/groupMg/directLeaderCheckIndex.jsp</result>
+		</action>
+		<action name="doGeneralManagerCheckGroupPlans" class="planGroupAction" method="doGeneralManagerCheckGroupPlans">
+			<result name="success">/businessManagement/groupMg/generalManagerCheckIndex.jsp</result>
+		</action>
+		<action name="initSetPlanOperator" class="planGroupAction" method="initSetPlanOperator">
+			<result name="success">/businessManagement/groupMg/setPlanOperator.jsp</result>
+		</action>
+		<action name="initSetPlanPage" class="planGroupAction" method="initSetPlanPage">
+			<result name="success">/businessManagement/groupMg/setPlanOperatorPage.jsp</result>
+		</action>
+		<action name="searchOperatorPlans" class="planGroupAction" method="searchOperatorPlans">
+			<result name="success">/businessManagement/groupMg/setPlanOperatorPage.jsp</result>
+		</action>
+		<action name="modifyGroupPlansPerson" class="planGroupAction" method="modifyGroupPlansPerson">
+			<result name="success">/businessManagement/groupMg/setPlanOperatorPage.jsp</result>
+		</action>
+		<action name="LoadProcurementCheck" class="planGroupAction" method="LoadProcurementCheck">
+			<result name="success">/businessManagement/groupMg/procurementWay_detail.jsp</result>
+		</action>
+		<action name="modifyProcurementsBackByIds" class="procurementCheckAction" method="modifyProcurementsBackByIds">
+			<result name="success"  type="redirectAction">
+			 <param name="actionName">seekSourceSearch</param>
+			</result>
+		</action>
+		
+		<!-- end add -->
+		<!-- add by yao 20130415 -->
+		<action name="searchPlans" class="planAction" method="searchPlans">
+			<result name="success">/businessManagement/planMg/setPlannerIndex.jsp</result>
+		</action>
+		<action name="searchPlanStatus" class="planAction" method="searchPlanStatus">
+			<result name="success">/businessManagement/planMg/searchPlanStatusIndex.jsp</result>
+		</action>
+		<action name="initSetPlanner" class="planAction" method="initPlanPage">
+			<result name="initSetPlanner">/businessManagement/planMg/setPlanner.jsp</result>
+		</action>
+		<action name="searchPlansA" class="planAction" method="searchPlansForApproval">
+			<result name="success">/businessManagement/planMg/planApprovalIndex.jsp</result>
+		</action>
+		<action name="planTrackSearch" class="planAction" method="planTrackSearch">
+			<result name="success">/businessManagement/planTrackMg/procurementWay_index.jsp</result>
+			<result name="planAdd_success">/businessManagement/planTrackMg/planAdd_index.jsp</result>
+			<!-- result name="planAdd_success">/businessManagement/contractMg/planAdd_index.jsp</result -->
+		</action>
+		<action name="initPlanApproval" class="planAction" method="initPlanPage">
+			<result name="initPlanApproval">/businessManagement/planMg/planApproval.jsp</result>
+		</action>
+		<action name="initPlanApprovalList" class="planAction" method="initPlanPage">
+			<result name="initPlanApprovalList">/businessManagement/planMg/planApprovalIndex.jsp</result>
+		</action>
+		<action name="modifyPlansPerson" class="planAction" method="modifyPlansPerson">
+			<result name="success">/businessManagement/planMg/setPlannerIndex.jsp</result>
+		</action>
+		<action name="modifyPlansOpinion" class="planAction" method="modifyPlansOpinion">
+			<result name="success">/businessManagement/planMg/planApprovalIndex.jsp</result>
+		</action>
+		<action name="initProcurementWay" class="planAction" method="initProcurementWay">
+			<result name="initProcurementWay">/businessManagement/planTrackMg/procurementWay_modify.jsp</result>
+			<result name="directorProcurementWay">/businessManagement/planTrackMg/procurementWay_d_modify.jsp</result>
+			<result name="innerProcurementWay">/businessManagement/planTrackMg/procurementWay_i_modify.jsp</result>
+			<result name="managerProcurementWay">/businessManagement/planTrackMg/procurementWay_m_modify.jsp</result>
+		</action>
+		<action name="doProcurementWay" class="planAction" method="doProcurementWay">
+			<result name="success">/businessManagement/planTrackMg/procurementWay_index.jsp</result>
+			<result name="seekSource_success">/businessManagement/seekSourceMg/seekSource_index.jsp</result>
+		</action>
+		<action name="procurementCheckDSearch" class="procurementCheckAction" method="procurementCheckDSearch">
+			<result name="success">/businessManagement/planTrackMg/procurementWay_d_index.jsp</result>
+		</action>
+		<action name="procurementCheckISearch" class="procurementCheckAction" method="procurementCheckISearch">
+			<result name="success">/businessManagement/planTrackMg/procurementWay_i_index.jsp</result>
+		</action>
+		<action name="procurementCheckMSearch" class="procurementCheckAction" method="procurementCheckMSearch">
+			<result name="success">/businessManagement/planTrackMg/procurementWay_m_index.jsp</result>
+		</action>
+		<action name="procurementCheckCSearch" class="procurementCheckAction" method="procurementCheckCSearch">
+			<result name="success">/businessManagement/planTrackMg/procurementWay_c_index.jsp</result>
+		</action>
+		<action name="procurementCheckSSearch" class="procurementCheckAction" method="procurementCheckSSearch">
+			<result name="success">/businessManagement/planTrackMg/procurementWay_s_index.jsp</result>
+		</action>
+		<action name="getProcurementCheck" class="procurementCheckAction" method="getProcurementCheck">
+			<result name="success">/businessManagement/planTrackMg/procurementWay_s_modify.jsp</result>
+		</action>
+		<action name="doProcurementCheck" class="procurementCheckAction" method="doProcurementCheck">
+			<result name="success">/businessManagement/planTrackMg/procurementWay_d_index.jsp</result>
+		</action>
+		<action name="modifyPc" class="procurementCheckAction" method="modifyPc">
+			<result name="success">/businessManagement/planTrackMg/procurementWay_d_index.jsp</result>
+		</action>
+		<action name="paAddPlan" class="procurementCheckAction" method="paAddPlan">
+			<result name="success">/businessManagement/planTrackMg/procurementWay_s_modify.jsp</result>
+		</action>
+		<action name="initPlanAdd" class="procurementCheckAction" method="initPlanAdd">
+			<result name="success">/businessManagement/planTrackMg/planAdd_index.jsp</result>
+		</action>
+		<action name="seekSourceSearch" class="procurementCheckAction" method="seekSourceSearch">
+			<result name="success">/businessManagement/seekSourceMg/seekSource_index.jsp</result>
+		</action>
+		<action name="initSeekSource" class="procurementCheckAction" method="initSeekSource">
+			<result name="success">/businessManagement/seekSourceMg/seekSource_modify.jsp</result>
+		</action>
+		<action name="initSeekSourceD" class="seekSourceAction" method="initSeekSourceD">
+			<result name="success">/businessManagement/seekSourceMg/seekSource_d_check.jsp</result>
+		</action>
+		<action name="initSeekSourceI" class="seekSourceAction" method="initSeekSourceI">
+			<result name="success">/businessManagement/seekSourceMg/seekSource_i_check.jsp</result>
+		</action>
+<!--		<action name="initSeekSourceL" class="seekSourceAction" method="initSeekSourceL">-->
+<!--			<result name="success">/businessManagement/seekSourceMg/seekSource_i_check.jsp</result>-->
+<!--		</action>-->
+		<action name="initSeekSourceM" class="seekSourceAction" method="initSeekSourceM">
+			<result name="success">/businessManagement/seekSourceMg/seekSource_m_check.jsp</result>
+		</action>
+		<action name="addSeekSource" class="seekSourceAction" method="addSeekSource">
+			<!-- result name="success">/businessManagement/seekSourceMg/seekSource_modify.jsp</result -->
+			<result name="success">/businessManagement/seekSourceMg/seekSource_index.jsp</result>
+		</action>
+		<action name="seekSourceDSearch" class="seekSourceAction" method="seekSourceDSearch">
+			<result name="success">/businessManagement/seekSourceMg/seekSource_d_index.jsp</result>
+		</action>
+		<action name="seekSourceISearch" class="seekSourceAction" method="seekSourceISearch">
+			<result name="success">/businessManagement/seekSourceMg/seekSource_i_index.jsp</result>
+		</action>
+		<action name="seekSourceLSearch" class="seekSourceAction" method="seekSourceLSearch">
+			<result name="success">/businessManagement/seekSourceMg/seekSource_l_index.jsp</result>
+		</action>
+		<action name="seekSourceMSearch" class="seekSourceAction" method="seekSourceMSearch">
+			<result name="success">/businessManagement/seekSourceMg/seekSource_m_index.jsp</result>
+		</action>
+		<action name="seekSourceCSearch" class="seekSourceAction" method="seekSourceCSearch">
+			<result name="success">/businessManagement/seekSourceMg/seekSource_c_index.jsp</result>
+		</action>
+		<action name="seekSourceSSearch" class="seekSourceAction" method="seekSourceSSearch">
+			<result name="success">/businessManagement/seekSourceMg/seekSource_s_index.jsp</result>
+		</action>
+		<action name="doSeekSourceD" class="seekSourceAction" method="doSeekSourceD">
+			<result name="success">/businessManagement/seekSourceMg/seekSource_d_index.jsp</result>
+		</action>
+		<action name="doSeekSourceI" class="seekSourceAction" method="doSeekSourceI">
+			<result name="success">/businessManagement/seekSourceMg/seekSource_i_index.jsp</result>
+		</action>
+		<action name="doSeekSourceM" class="seekSourceAction" method="doSeekSourceM">
+			<result name="success">/businessManagement/seekSourceMg/seekSource_m_index.jsp</result>
+		</action>
+		<action name="doSeekSourceC" class="seekSourceAction" method="doSeekSourceC">
+			<result name="success">/businessManagement/seekSourceMg/seekSource_c_index.jsp</result>
+		</action>
+		<action name="doSeekSourceL" class="seekSourceAction" method="doSeekSourceL">
+			<result name="success">/businessManagement/seekSourceMg/seekSource_c_index.jsp</result>
+		</action>
+		<action name="showCSeekSource" class="seekSourceAction" method="showCSeekSource">
+			<result name="success">/businessManagement/seekSourceMg/seekSource_c_modify.jsp</result>
+		</action>
+		<action name="showMSeekSource" class="seekSourceAction" method="showMSeekSource">
+			<result name="success">/businessManagement/seekSourceMg/seekSource_m_modify.jsp</result>
+		</action>
+		<action name="showDSeekSource" class="seekSourceAction" method="showDSeekSource">
+			<result name="success">/businessManagement/seekSourceMg/seekSource_d_modify.jsp</result>
+		</action>
+		<action name="showSSeekSource" class="seekSourceAction" method="showSSeekSource">
+			<result name="success">/businessManagement/seekSourceMg/seekSource_s_modify.jsp</result>
+		</action>
+		<action name="showISeekSource" class="seekSourceAction" method="showISeekSource">
+			<result name="success">/businessManagement/seekSourceMg/seekSource_i_modify.jsp</result>
+		</action>
+		<action name="doModifySeekSource" class="seekSourceAction" method="doModifySeekSource">
+			<result name="success">/businessManagement/seekSourceMg/seekSource_s_modify.jsp</result>
+		</action>
+		<action name="delSeekSourceDetail" class="seekSourceAction" method="delSeekSourceDetail">
+			<result name="success" type="redirectAction">
+				 <param name="actionName">showSSeekSource</param>
+				 <param name="seekSource.id">${seekSource.id}</param>
+			</result>
+			<!-- /businessManagement/seekSourceMg/seekSource_s_modify.jsp</result> -->
+		</action>
+		
+		<!-- end add by yao 20130415 -->
+		<action name="addOrModify" class="planAction" method="addOrModify">
+			<result name="modify_input">/businessManagement/planMg/add_input.jsp</result>
+			<result name="add_input">/businessManagement/planMg/add_input.jsp</result>
+		</action>
+		<action name="del_plan" class="planAction" method="delete">
+			<result name="del_success">/businessManagement/planMg/index.jsp</result>
+		</action>
+		<action name="add_plan" class="planAction" method="add">
+			<result name="add_success">/businessManagement/planMg/index.jsp</result>
+		</action>
+		<action name="deletePlansByIds" class="planAction" method="deletePlansByIds">
+			<result name="success"  type="redirectAction">
+			 <param name="actionName">plan</param>
+			 <param name="pager.offset">${myOffset}</param>
+			</result>
+		</action>
+		<action name="modifyPlansOrg" class="planAction" method="modifyPlansOrg">
+			<result name="success">/businessManagement/planMg/index.jsp</result>
+		</action>
+		<action name="getPlanss" class="planAction" method="getPlanss">
+			<result name="success">/businessManagement/planMg/getPlan.jsp</result>
+		</action>
+		<action name="getPlanssPerson" class="planAction" method="getPlanssPerson">
+			<result name="success"  type="redirectAction">
+				<param name="actionName">getPlanss</param>
+				<param name="pager.offset">${myOffset}</param>
+			</result>
+		</action>
+		<action name="modifyPlansByIdsBack" class="planAction" method="modifyPlansByIdsBack">
+			<result name="success"  type="redirectAction">
+			 <param name="actionName">planTrackSearch</param>
+			 <param name="pager.offset">${myOffset}</param>
+			</result>
+			<result name="seek_success"  type="redirectAction">
+			 <param name="actionName">SeekSourceSearch</param>
+			 <param name="pager.offset">${myOffset}</param>
+			</result>
+		</action>
+		<action name="modifyPlan" class="planAction" method="modifyPlan">
+			<result name="modifyPlan_success">/businessManagement/planTrackMg/modifyPlan_input.jsp</result>
+		</action>
+		<action name="doModifyPlan" class="planAction" method="doModifyPlan">
+			<result name="success">/businessManagement/planTrackMg/procurementWay_index.jsp</result>
+		</action>
+		<action name="modifyPlanMg" class="planAction" method="modifyPlan">
+			<result name="modifyPlan_success">/businessManagement/planMg/modifyPlan_input.jsp</result>
+		</action>
+		<action name="doModifyPlanMg" class="planAction" method="doModifyPlanMg">
+		<!-- 
+			<result name="doModifyPlanMg_success"  type="redirectAction">
+			 <param name="actionName">plan</param>
+			</result>
+		 -->
+			<result name="success">/businessManagement/planMg/setPlannerIndex.jsp</result>
+		</action>
+		<!--<action name="SeekSourceSearch" class="planAction" method="SeekSourceSearch">
+			<result name="success">/businessManagement/seekSourceMg/seekSource_index.jsp</result>
+		</action>
+		-->
+		<action name="changeSearch" class="planAction" method="changeSearch">
+			<result name="success">/businessManagement/changeMg/change_index.jsp</result>
+		</action>
+		<action name="initChangeSuppliers" class="planAction" method="initChangeSuppliers">
+			<result name="success">/businessManagement/changeMg/change_suppliers.jsp</result>
+		</action>
+		<action name="initChangeReportComp" class="planAction" method="initChangeReportComp">
+			<result name="success">/businessManagement/changeMg/change_useComp.jsp</result>
+		</action>
+		<action name="doChangePlan" class="planAction" method="doChangePlan">
+			<result name="success" type="redirectAction">
+			 <param name="actionName">changeSearch</param>
+			</result>
+		</action>
+		
+		<action name="doSeekSource" class="planAction" method="doSeekSource">
+			<result name="success">/businessManagement/seekSourceMg/seekSource_index.jsp</result>
+		</action>
+		<action name="modifyPlanClearSeekDate" class="planAction" method="modifyPlanClearSeekDate">
+			<result name="success" type="redirectAction">
+			 <param name="actionName">SeekSourceSearch</param>
+			</result>
+		</action>
+		<action name="modifySeekSource" class="planAction" method="modifySeekSource">
+			<result name="success">/businessManagement/seekSourceMg/seekSource_index.jsp</result>
+		</action>
+		<action name="toSeekSource" class="planAction" method="toSeekSource">
+			<result name="success">/businessManagement/seekSourceMg/seekSource_input.jsp</result>
+			<result name="success_price">/businessManagement/seekSourceMg/seekSourcePrice_modify.jsp</result>
+		</action>
+		<action name="doSeekSourcePmodify" class="planAction" method="doSeekSourcePmodify">
+			<result name="success">/businessManagement/seekSourceMg/seekSource_index.jsp</result>
+		</action>
+		<action name="toModifySeekSource" class="planAction" method="toModifySeekSource">
+			<result name="modifySuccess">/businessManagement/seekSourceMg/seekSource_modify.jsp</result>
+			<result name="seekSource_success">/businessManagement/planTrackMg/procurementRemark_modify.jsp</result>
+		</action>
+		<action name="doChange" class="planAction" method="doChange">
+			<result name="success">/businessManagement/changeMg/change_index.jsp</result>
+		</action>
+		<action name="cancelPlans" class="planAction" method="cancelPlans">
+			<result name="success" type="redirectAction">
+				<param name="actionName">changeSearch</param>
+				<param name="pager.offset">${myOffset}</param>
+			</result>
+		</action>
+		<action name="redoPlans" class="planAction" method="redoPlans">
+			<result name="success" type="redirectAction">
+				<param name="actionName">changeSearch</param>
+				<param name="pager.offset">${myOffset}</param>
+			</result>
+		</action>
+		<action name="getSave" class="planAction" method="getSave">
+			<result name="success">/statementsManagement/statementStatistics/index.jsp</result>
+			<result name="dySuccess">/statementsManagement/statementStatistics/dy.jsp</result>
+		</action>
+		<action name="cfPlan" class="planAction" method="cfPlan">
+			<result name="success">/businessManagement/salesContractMg/index.jsp</result>
+			<result name="pcontract_success">/businessManagement/contractMg/index.jsp</result>
+		</action>
+		
+		<action name="getPlanStatusList" class="planAction" method="getPlanStatusList">
+			<result name="success">/statementsManagement/statementStatistics/plan.jsp</result>
+		</action>
+		<action name="getReportCompList" class="planAction" method="getReportCompList">
+			<result name="success">/statementsManagement/statementStatistics/reportCompStatistics.jsp</result>
+		</action>
+		
+		
+		<action name="procurementContractSearch" class="procurementContractAction" method="procurementContractSearch">
+			<result name="success">/businessManagement/contractMg/index.jsp</result>
+		</action>
+		<action name="toAddContract" class="procurementContractAction" method="toAddContract">
+			<result name="toAddSuccess">/businessManagement/contractMg/add_input.jsp</result>
+		</action>
+		<action name="planAdd" class="procurementContractAction" method="planAdd">
+			<result name="success">/businessManagement/contractMg/modify_input.jsp</result>
+		</action>
+		<action name="addContract" class="procurementContractAction" method="addContract">
+			<result name="success">/businessManagement/contractMg/index.jsp</result>
+			<!-- <result name="modify_success">/businessManagement/contractMg/index.jsp</result> -->
+		</action>
+		
+		<action name="salesContractSearch" class="salesContractAction" method="salesContractSearch">
+			<result name="success">/businessManagement/salesContractMg/index.jsp</result>
+		</action>
+		<action name="addSalesContract_input" class="salesContractAction" method="addSalesContract_input">
+			<result name="addSalesContract_input_success">/businessManagement/salesContractMg/addContract_input.jsp</result>
+		</action>
+		<action name="doModifyPlansales" class="salesContractAction" method="doModifyPlansales">
+			<result name="success">/businessManagement/salesContractMg/index.jsp</result>
+			<result name="modify_success">/businessManagement/salesContractMg/salescontracts_index.jsp</result>
+			<!-- <result name="modify_success"  type="redirectAction">
+				<param name="actionName">salesContracts</param>
+				<param name="contractMsg">${contractMsg}</param>
+			</result> -->
+		</action>
+		<action name="salesContracts" class="salesContractAction" method="salesContracts">
+			<result name="success">/businessManagement/salesContractMg/salescontracts_index.jsp</result>
+		</action>
+		<action name="financialSalesContracts" class="salesContractAction" method="salesContracts">
+			<result name="success">/businessManagement/salesContractMg/financial_salescontracts_index.jsp</result>
+		</action>
+		<action name="getPlans" class="salesContractAction" method="getPlans">
+			<result name="getPlans_success">/businessManagement/salesContractMg/detailed_input.jsp</result>
+			<result name="modifySales_success">/businessManagement/salesContractMg/modify_input.jsp</result>
+		</action>
+		<action name="getFinancialPlans" class="salesContractAction" method="getPlans">
+			<result name="getPlans_success">/businessManagement/salesContractMg/financial_detailed_input.jsp</result>
+			<result name="modifySales_success">/businessManagement/salesContractMg/modify_input.jsp</result>
+		</action>
+		<action name="update_plan_sid" class="salesContractAction" method="update_plan_sid">
+			<result name="update_plan_sid_success"   type="redirectAction">
+				<param name="actionName">salesContracts</param>
+			</result>
+		</action>
+		<action name="del_salesContract" class="salesContractAction" method="del_salesContract">
+			<result name="del_salesContract_success"   type="redirectAction">
+				<param name="actionName">salesContracts</param>
+				<param name="contractMsg">${contractMsg}</param>
+				<param name="pager.offset">${myOffset}</param>
+			</result>
+		</action>
+		
+		
+		<action name="del_billing" class="salesContractAction" method="del_billing">
+			<result name="del_billing_success"   type="redirectAction">
+			<param name="actionName">getPlans</param>
+			<param name="salesContractId">${salesContractId}</param>
+			<param name="am">${am}</param>
+			</result>
+		</action>
+		<action name="saveBilling" class="salesContractAction" method="saveBilling">
+			<result name="success"   type="redirectAction">
+			<param name="actionName">getPlans</param>
+			<param name="salesContractId">${salesContractId}</param>
+			</result>
+		</action>
+		<action name="addBillingDetail" class="salesContractAction" method="addBillingDetail">
+			<result name="success">/businessManagement/salesContractMg/detailed_input.jsp</result>
+		</action>
+		<action name="delBillingDetail" class="salesContractAction" method="delBillingDetail">
+			<result name="success"   type="redirectAction">
+				<param name="actionName">toAddBillingByArrival</param>
+				<param name="scid">${salesContractId}</param>
+				<param name="id">${id}</param>
+				<param name="sbillingDate">${billingDate}</param>
+			</result>
+		</action>
+		<action name="cfArrivalItems" class="arrivalItemsAction" method="cfArrivalItems">
+			<result name="success">/businessManagement/salesContractMg/billingDetail.jsp</result>
+		</action>
+		<action name="del_contractReceivedMoney" class="salesContractAction" method="del_contractReceivedMoney">
+			<result name="del_contractReceivedMoney_success"   type="redirectAction">
+			<param name="actionName">salesContracts</param>
+			</result>
+		</action>
+		
+		
+		
+		
+		<action name="importfile" class="importAction">
+			<result name="importfile_success">/businessManagement/planMg/import_success.jsp</result>
+			<result name="feedback">/businessManagement/planMg/import_feedback.jsp</result>
+		</action>
+		<action name="importfilex" class="importAction" method="importfilex">
+			<result name="importfile_success">/businessManagement/planMg/import_success.jsp</result>
+			<result name="feedback">/businessManagement/planMg/import_feedback.jsp</result>
+		</action>
+		<action name="importSeekSourcefile" class="importAction" method="importSeekSource">
+			<result name="importSeekSource_success">/businessManagement/seekSourceMg/import_success.jsp</result>
+			<result name="feedback">/businessManagement/seekSourceMg/import_feedback.jsp</result>
+		</action>
+		
+		<action name="toAddArrival" class="arrivalItemsAction" method="toAddArrival">
+			<result name="success">/businessManagement/arrivalItemsMg/index.jsp</result>
+		</action>
+		<action name="toAddBillingByArrival" class="arrivalItemsAction" method="toAddBillingByArrival">
+			<result name="success">/businessManagement/salesContractMg/billingDetail.jsp</result>
+		</action>
+		<action name="deleteArrivalItems" class="arrivalItemsAction" method="deleteArrivalItems">
+			<result name="success">/businessManagement/arrivalItemsMg/index.jsp</result>
+			<!-- <result name="success"  type="redirectAction">
+				<param name="actionName">toAddArrival</param>
+				<param name="id">${id}</param>
+			</result> -->
+		</action>
+		<action name="addArrival" class="arrivalItemsAction" method="addArrival">
+			<result name="success">/businessManagement/contractMg/contracts_index.jsp</result>
+		</action>
+		
+		<action name="doModifysales" class="salesContractAction" method="doModifysales">
+			<result name="success">/businessManagement/salesContractMg/salescontracts_index.jsp</result>
+		</action>
+		
+		<action name="procurementContracts" class="contractAction" >
+			<result name="success">/businessManagement/contractMg/contracts_index.jsp</result>
+		</action>
+		<action name="financialProcurementContracts" class="contractAction" >
+			<result name="success">/businessManagement/contractMg/financial_contracts_index.jsp</result>
+		</action>
+		<action name="getProcurementPlans" class="contractAction" method="getProcurementPlans">
+			<result name="getProcurementPlans_success">/businessManagement/contractMg/detailed_input.jsp</result>
+			<result name="modifyProcurementPlans_success">/businessManagement/contractMg/modify_input.jsp</result>
+		</action>
+		<action name="getFinancialProcurementPlans" class="contractAction" method="getProcurementPlans">
+			<result name="getProcurementPlans_success">/businessManagement/contractMg/financial_detailed_input.jsp</result>
+			<result name="modifyProcurementPlans_success">/businessManagement/contractMg/modify_input.jsp</result>
+		</action>
+		<action name="del_contranctCredit" class="contractAction" method="del_contranctCredit">
+			<result name="del_contranctCredit_success"   type="redirectAction">
+			<param name="actionName">procurementContracts</param>
+			</result>
+		</action>
+
+		
+		<action name="del_payed" class="contractAction" method="del_payed">
+			<result name="del_payed_success"   type="redirectAction">
+			<param name="actionName">procurementContracts</param>
+			</result>
+		</action>
+		<action name="del_plan_pid" class="contractAction" method="del_plan_pid">
+			<result name="del_plan_pid_success"   type="redirectAction">
+			<param name="actionName">getProcurementPlans</param>
+			<param name="procurementContractId">${procurementContractId }</param>
+			<param name="b">${b }</param>
+			<param name="am">${am }</param>
+			</result>
+		</action>
+		<action name="del_procurementContract" class="contractAction" method="del_procurementContract">
+			<result name="del_procurementContract_success"   type="redirectAction">
+			<param name="actionName">procurementContracts</param>
+			<param name="contractMsg">${contractMsg}</param>
+			<param name="pager.offset">${myOffset}</param>
+			</result>
+		</action>
+		<action name="doModifyProcurementContract" class="contractAction" method="doModifyProcurementContract">
+			<result name="success">/businessManagement/contractMg/contracts_index.jsp</result>
+		</action>
+		<action name="export" class="exportAction" method="planSheet">
+			<result name="planSheet_success">/statementsManagement/statementStatistics/plan.jsp</result>
+		</action>
+		<!--  action name="exportPlan" class="exportAction" method="exportPlan">
+			<result name="success">/statementsManagement/statementStatistics/plan.jsp</result>
+		</action-->
+		<action name="exportReportComp" class="exportAction" method="exportReportComp">
+			<result name="success">/statementsManagement/statementStatistics/reportCompStatistics.jsp</result>
+		</action>
+		<action name="exportSalesContract" class="exportAction" method="exportSalesContract">
+			<result name="exportSalesContract_success">/businessManagement/salesContractMg/salescontracts_index.jsp</result>
+		</action>
+		<action name="exportProcurementContract" class="exportAction" method="exportProcurementContract">
+			<result name="exportProcurementContract_success">/businessManagement/contractMg/contracts_index.jsp</result>
+		</action>
+		<action name="exportSeekSourcePlans" class="exportAction" method="exportSeekSourcePlans">
+			<result name="success">/businessManagement/seekSourceMg/seekSource_index.jsp</result>
+		</action>
+		<action name="loadAllMessage" class="messageAction">
+			<result name="success">/businessManagement/planMg/loadAllMessage.jsp</result>
+		</action>
+		
+	</package>
+
+</struts>

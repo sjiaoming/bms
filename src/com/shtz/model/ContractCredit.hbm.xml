@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+  <class table="t_contractcredit" name="com.shtz.model.ContractCredit">
+    <id access="field" name="id">
+      <generator class="native"/>
+    </id>
+    <property name="contractCreditMoney" access="field"/>
+    <property name="contractCreditDate" access="field"/>
+    <many-to-one column="cid" cascade="save-update" access="field" name="procurementContract"/>
+  </class>
+</hibernate-mapping>

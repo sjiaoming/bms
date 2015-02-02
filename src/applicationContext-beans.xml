@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  - Application context definition for JPetStore's business layer.
+  - Contains bean references to the transaction manager and to the DAOs in
+  - dataAccessContext-local/jta.xml (see web.xml's "contextConfigLocation").
+  -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:aop="http://www.springframework.org/schema/aop"
+		xmlns:tx="http://www.springframework.org/schema/tx"
+		xsi:schemaLocation="
+			http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+			http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+			http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+	
+	<bean id="orgService" class="com.shtz.service.impl.OrgServiceImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>
+		<property name="ps">
+			<ref bean="pageService"/>
+		</property>
+	</bean>
+	<bean id="pageService" class="com.shtz.service.impl.PageServiceImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>	
+		<property name="pageModel">
+			<ref bean="pageModel"/>
+		</property>
+	</bean>
+	<bean id="userCompService" class="com.shtz.service.impl.UserCompServiceImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>	
+		<property name="pservice">
+			<ref bean="pageService"/>
+		</property>
+	</bean>
+	<bean id="suppliersService" class="com.shtz.service.impl.SuppliersServiceImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>	
+		<property name="pservice">
+			<ref bean="pageService"/>
+		</property>
+	</bean>
+	<bean id="pageModel" class="com.shtz.util.PageModel"></bean>
+	
+	<bean id="personService" class="com.shtz.service.impl.PersonServiceImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>	
+		<property name="service">
+			<ref bean="pageService"/>
+		</property>
+	</bean>
+	
+	<bean id="moduleService" class="com.shtz.service.impl.ModuleServiceImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>	
+		<property name="service">
+			<ref bean="pageService"/>
+		</property>
+	</bean>
+	<bean id="checkService" class="com.shtz.service.impl.CheckServiceImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>	
+	</bean>
+		<bean id="roleService" class="com.shtz.service.impl.RoleServiceImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>	
+		<property name="service">
+			<ref bean="pageService"/>
+		</property>
+	</bean>
+
+	<bean id="userService" class="com.shtz.service.impl.UserServiceImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>	
+		<property name="ps">
+			<ref bean="pageService"/>
+		</property>
+	</bean>
+	<bean id="orgnService" class="com.shtz.service.impl.OrganizationServiceImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>	
+		<property name="ps">
+			<ref bean="pageService"/>
+		</property>
+	</bean>
+	
+	<bean id="aclService" class="com.shtz.service.impl.AclServiceImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>	
+	</bean>
+	
+	<bean id="initSystemDatas" class="com.shtz.service.impl.InitSystemDatasImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>
+		<property name="oservice">
+			<ref bean="orgService"/>
+		</property>
+		<property name="uservice">
+			<ref bean="userService"/>
+		</property>
+	</bean>
+	<bean id="securityFunction" class="com.shtz.util.SecurityFunction">
+		<property name="aclService">
+			<ref bean="aclService"/>
+		</property>	
+	</bean>
+	<bean id="planService" class="com.shtz.service.impl.PlanServiceImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>
+		<property name="service">
+			<ref bean="pageService"/>
+		</property>
+		<property name="arithService">
+			<ref bean="arith"/>
+		</property>
+		<property name="pageModel">
+			<ref bean="pageModel"/>
+		</property>
+		<property name="statusName">
+			<ref bean="statusName"/>
+		</property>
+	</bean>
+	
+	<bean id="procurementCheckService" class="com.shtz.service.impl.ProcurementCheckServiceImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>	
+		<property name="service">
+			<ref bean="pageService"/>
+		</property>
+		<property name="pageModel">
+			<ref bean="pageModel"/>
+		</property>
+	</bean>
+	<bean id="groupService" class="com.shtz.service.impl.GroupServiceImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>	
+		<property name="service">
+			<ref bean="pageService"/>
+		</property>
+		<property name="pageModel">
+			<ref bean="pageModel"/>
+		</property>
+	</bean>
+	<bean id="seekSourceService" class="com.shtz.service.impl.SeekSourceServiceImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>	
+		<property name="service">
+			<ref bean="pageService"/>
+		</property>
+		<property name="pageModel">
+			<ref bean="pageModel"/>
+		</property>
+	</bean>
+	<bean id="procurementContractService" class="com.shtz.service.impl.ProcurementContractServiceImpl" >
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>
+		<property name="service">
+			<ref bean="pageService"/>
+		</property>
+	</bean>
+	<bean id="salesContractService" class="com.shtz.service.impl.SalesContractServiceImpl" >
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>
+		<property name="service">
+			<ref bean="pageService"/>
+		</property>
+		<property name="pservice">
+			<ref bean="planService"/>
+		</property>
+		<property name="pageModel">
+			<ref bean="pageModel"/>
+		</property>
+		<property name="arithService">
+			<ref bean="arith"/>
+		</property>
+	</bean>
+	<bean id="excelCreate" class="com.shtz.util.ExcelCreate"></bean>
+	<bean id="excelRead" class="com.shtz.util.ExcelRead"></bean>
+	<bean id="excelReadx" class="com.shtz.util.ExcelRead2010"></bean>
+	<bean id="arith" class="com.shtz.util.Arith"></bean>
+	<bean id="statusName" class="com.shtz.util.StatusName"></bean>
+	<bean id="arrivalItemsService" class="com.shtz.service.impl.ArrivalItemsServiceImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>
+		<property name="arithService">
+			<ref bean="arith"/>
+		</property>
+		<property name="pservice">
+			<ref bean="planService"/>
+		</property>
+	</bean>
+	<bean id="contractService" class="com.shtz.service.impl.ContractServiceImpl" >
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>
+		<property name="service">
+			<ref bean="pageService"/>
+		</property>
+		<property name="pservice">
+			<ref bean="planService"/>
+		</property>
+		<property name="pageModel">
+			<ref bean="pageModel"/>
+		</property>
+		<property name="arithService">
+			<ref bean="arith"/>
+		</property>	
+	</bean>
+	<bean id="exportService" class="com.shtz.service.impl.ExportServiceImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>
+	</bean>
+</beans>

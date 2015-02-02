@@ -1,0 +1,48 @@
+<td>采购方案：</td>
+			<td>
+				<select id="plan.procurementWay" name="procurementWay">
+				    <option value="1">公开招标</option>
+				    <option value="2">邀请招标</option>
+				    <option value="3">竞争性谈判</option>
+				    <option value="4">单一来源</option>
+				    <option value="5">寻比价</option>
+				    <option value="6">合同追加</option>
+				 </select>
+			</td>
+＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+<td width="10%">合同执行方式：</td>
+			<td><select id="plan.contractExecutionWay" name="contractExecutionWay">
+				    <option value="1">统谈统签统付</option>
+				    <option value="2">统谈统签分付</option>
+				    <option value="3">统谈分签</option>
+				 </select>
+				 </td>
+＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝				 
+	/**
+	 * 计划单状态  plan.PlanStatus
+	 * 01:未处理
+	 * 02:已采购方案
+	 * 03:已寻源
+	 * 04:已销售
+	 * 05:已采购
+	 * 06:已取消
+	 */
+＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝				 
+	/**
+	 * 计划单拆分状态 plan.model
+	 * 01:未拆分
+	 * 02:已拆分
+	 */
+＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝				 
+	/**
+	 * 付款方式 plan.payed
+	 * 01:电汇
+	 * 02:承兑
+	 */
+＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝				 
+	/**
+	 * 变更状态 plan.procurementFlag
+	 * 01:未变更
+	 * 02:已变更
+	 */
+＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝

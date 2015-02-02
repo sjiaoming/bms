@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+  <class table="t_arrivalitems" name="com.shtz.model.ArrivalItems">
+    <id access="field" name="id">
+      <generator class="native"/>
+    </id>
+    <property name="arrivalNum" access="field"/>
+    <property name="arrivalDate" access="field"/>
+    <property name="acceptanceNum" access="field"/>
+    <property name="acceptanceDate" access="field"/>
+    <property name="billingStatus" access="field"/>
+    <property name="billingNum" access="field"/>
+    <many-to-one column="aid" cascade="save-update" access="field" name="plan"/>
+    <many-to-one column="baid" cascade="save-update" access="field" name="billing"/>
+    <set inverse="true" access="field" name="billingDetail">
+      <key column="arrival_id"/>
+      <one-to-many class="com.shtz.model.BillingDetail"/>
+    </set>
+  </class>
+</hibernate-mapping>

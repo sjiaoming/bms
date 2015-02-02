@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+  <class table="t_change" name="com.shtz.model.Change">
+    <id access="field" name="id">
+      <generator class="native"/>
+    </id>
+    <property name="num" access="field" not-null="true"/>
+    <property name="planPrice" access="field" not-null="true"/>
+    <property name="contractMoney" access="field" not-null="true"/>
+    <property name="reason" access="field"/>
+    <property name="personName" access="field"/>
+    <property name="changeTime" access="field"/>
+    <many-to-one unique="true" access="field" name="plan" />
+  </class>
+</hibernate-mapping>

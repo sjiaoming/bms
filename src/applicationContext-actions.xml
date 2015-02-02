@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  - Application context definition for JPetStore's business layer.
+  - Contains bean references to the transaction manager and to the DAOs in
+  - dataAccessContext-local/jta.xml (see web.xml's "contextConfigLocation").
+  -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:aop="http://www.springframework.org/schema/aop"
+		xmlns:tx="http://www.springframework.org/schema/tx"
+		xsi:schemaLocation="
+			http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+			http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+			http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+		
+	<bean id="orgAction" class="com.shtz.action.OrgAction" scope="prototype">
+		<property name="service" ref="orgService" />
+		<property name="pageModel" ref="pageModel" />
+	</bean>
+	
+	<bean id="addAction" class="com.shtz.action.AddAction" scope="prototype">
+		<property name="service" ref="orgService" />
+	</bean>
+	
+	<bean id="delAction" class="com.shtz.action.DelAction" scope="prototype">
+		<property name="service" ref="orgService" />
+	</bean>
+	
+	<bean id="personAction" class="com.shtz.action.PersonAction" scope="prototype">
+		<property name="service" ref="personService" />
+		<property name="oservice" ref="orgnService" />
+		<property name="groupService" ref="groupService" />
+	</bean>
+	
+	<bean id="moduleAction" class="com.shtz.action.ModuleAction" scope="prototype">
+		<property name="service" ref="moduleService" />
+		<property name="pageModel" ref="pageModel" />
+		<property name="aservice" ref="aclService" />
+	</bean>
+	
+	<bean id="roleAction" class="com.shtz.action.RoleAction" scope="prototype">
+		<property name="service" ref="roleService" />
+		<property name="pageModel" ref="pageModel" />
+	</bean>
+	
+	<bean id="userAction" class="com.shtz.action.UserAction" scope="prototype">
+		<property name="uservice" ref="userService" />
+		<property name="rservice" ref="roleService" />
+		<property name="pservice" ref="personService" />
+		<property name="pageModel" ref="pageModel" />
+	</bean>
+	<bean id="userCompAction" class="com.shtz.action.UserCompAction" scope="prototype">
+		<property name="uservice" ref="userService" />
+		<property name="rservice" ref="roleService" />
+		<property name="pageModel" ref="pageModel" />
+		<property name="ucservice" ref="userCompService" />
+	</bean>
+	<bean id="suppliersAction" class="com.shtz.action.SuppliersAction" scope="prototype">
+		<property name="uservice" ref="userService" />
+		<property name="rservice" ref="roleService" />
+		<property name="pageModel" ref="pageModel" />
+		<property name="suservice" ref="suppliersService" />
+	</bean>
+	<bean id="organizationAction" class="com.shtz.action.OrganizationAction" scope="prototype">
+		<property name="oservice" ref="orgnService" />
+		<property name="pageModel" ref="pageModel" />
+	</bean>
+
+	<bean id="aclAction" class="com.shtz.action.AclAction" scope="prototype">
+		<property name="userService" ref="userService" />
+		<property name="roleService" ref="roleService" />
+		<property name="moduleService" ref="moduleService" />
+		<property name="pageModel" ref="pageModel" />
+	</bean>
+	<bean id="loginAction" class="com.shtz.action.LoginAction" scope="prototype">
+		<property name="service" ref="userService" />
+		<property name="oservice" ref="orgnService" />
+		<property name="suservice" ref="suppliersService" />
+		<property name="ucservice" ref="userCompService" />
+	</bean>
+	
+	<bean id="outlookAction" class="com.shtz.action.OutlookAction" scope="prototype">
+		<property name="aservice" ref="aclService" />
+	</bean>
+	
+	<bean id="mainAction" class="com.shtz.action.MainAction" scope="prototype">
+	</bean>
+	<bean id="messageAction" class="com.shtz.action.MessageAction" scope="prototype">
+		<property name="pcService" ref="procurementCheckService" />
+		<property name="planService" ref="planService" />
+		<property name="pccService" ref="procurementContractService" />
+		<property name="seekSourceService" ref="seekSourceService" />
+		<property name="scService" ref="salesContractService" />
+		<property name="personService" ref="personService" />
+		<property name="groupService" ref="groupService" />
+	</bean>
+	<bean id="planAction" class="com.shtz.action.PlanAction" scope="prototype">
+		<property name="service" ref="planService" />
+		<property name="personService" ref="personService" />
+		<property name="suservice" ref="suppliersService" />
+		<property name="checkService" ref="checkService" />
+		<property name="ucservice" ref="userCompService" />
+		<property name="pcService" ref="procurementCheckService" />
+	</bean>
+	<bean id="planGroupAction" class="com.shtz.action.PlanGroupAction" scope="prototype">
+		<property name="service" ref="planService" />
+		<property name="pcService" ref="procurementCheckService" />
+		<property name="personService" ref="personService" />
+		<property name="suservice" ref="suppliersService" />
+		<property name="groupService" ref="groupService" />
+	</bean>
+	<bean id="procurementContractAction" class="com.shtz.action.ProcurementContractAction" scope="prototype">
+		<property name="service" ref="procurementContractService" />
+		<property name="suservice" ref="suppliersService" />
+		<property name="pservice" ref="planService" />
+		<property name="oservice" ref="orgnService" />
+	</bean>
+	<bean id="seekSourceAction" class="com.shtz.action.SeekSourceAction" scope="prototype">
+		<property name="seekSourceService" ref="seekSourceService" />
+		<property name="pcService" ref="procurementCheckService" />
+		<property name="personService" ref="personService" />
+		<property name="suservice" ref="suppliersService" />
+		<property name="checkService" ref="checkService" />
+		<property name="planService" ref="planService" />
+		<property name="groupService" ref="groupService" />
+	</bean>
+	<bean id="procurementCheckAction" class="com.shtz.action.ProcurementCheckAction" scope="prototype">
+		<property name="pcService" ref="procurementCheckService" />
+		<property name="suservice" ref="suppliersService" />
+		<property name="personService" ref="personService" />
+		<property name="checkService" ref="checkService" />
+	</bean>
+	<bean id="salesContractAction" class="com.shtz.action.SalesContractAction" scope="prototype">
+		<property name="service" ref="salesContractService" />
+		<property name="pservice" ref="planService" />
+		<property name="pcservice" ref="procurementContractService" />
+		<property name="aservice" ref="arrivalItemsService" />
+		<property name="arithService">
+			<ref bean="arith"/>
+		</property>
+	</bean>
+	<bean id="importAction" class="com.shtz.action.ImportAction" scope="prototype">
+		<property name="excelCreateService" ref="excelCreate" />
+		<property name="excelReadService" ref="excelRead" />
+		<property name="excelReadxService" ref="excelReadx" />
+		<property name="pservice" ref="planService" />
+		<property name="personService" ref="personService" />
+		<property name="seekSourceService" ref="seekSourceService" />
+		<property name="pcService" ref="procurementCheckService" />
+		<property name="ucservice" ref="userCompService" />
+		<property name="supplierService" ref="suppliersService" />
+	</bean>
+	<bean id="arrivalItemsAction" class="com.shtz.action.ArrivalItemsAction" scope="prototype">
+		<property name="service" ref="procurementContractService" />
+		<property name="pservice" ref="planService" />
+		<property name="aservice" ref="arrivalItemsService" />
+		<property name="scservice" ref="salesContractService" />
+		<property name="arithService">
+			<ref bean="arith"/>
+		</property>
+	</bean>
+	
+	<bean id="contractAction" class="com.shtz.action.ContractAction" scope="prototype">
+		<property name="service" ref="contractService" />
+		<property name="pservice" ref="procurementContractService" />
+	</bean>
+	<bean id="exportAction" class="com.shtz.action.ExportAction" scope="prototype">
+		<property name="excelCreateService" ref="excelCreate" />
+		<property name="excelReadService" ref="excelRead" />
+		<property name="eservice" ref="exportService" />
+		<property name="pservice" ref="planService" />
+		<property name="pcService" ref="procurementCheckService" />
+		<property name="service" ref="salesContractService" />
+		<property name="cservice" ref="contractService" />
+		<property name="statusName" ref="statusName" />
+		<property name="supplierService" ref="suppliersService" />
+	</bean>
+</beans>

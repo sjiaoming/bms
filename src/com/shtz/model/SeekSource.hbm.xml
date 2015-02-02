@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+  <class table="t_seekSource" name="com.shtz.model.SeekSource">
+    <id access="field" name="id">
+      <generator class="native"/>
+    </id>
+    <property name="checkNum" access="field" not-null="true"/>
+    <property name="checkStatus" access="field" not-null="true"/>
+    <property name="leaderStatus" access="field" not-null="true"/>
+    <property name="submitDate" access="field" not-null="true"/>
+    <many-to-one column="pdid" access="field" name="director"/>
+    <many-to-one column="pmid" access="field" name="manager"/>
+    <many-to-one column="psid" access="field" name="person"/>
+    <many-to-one column="pcid" access="field" name="chairMan"/>
+    <many-to-one column="piid" access="field" name="innerContral"/>
+    <many-to-one unique="true" column="pchId" access="field" name="pc" cascade="none"/>
+    <set inverse="true" cascade="all" access="field" name="details" order-by="planId desc">
+      <key column="sid"/>
+      <one-to-many class="com.shtz.model.SeekSourceDetail"/>
+    </set>
+    <property name="opinion" access="field"/>
+    <set inverse="true" cascade="all" access="field" name="checks" order-by="checkDate desc">
+      <key column="ssid"/>
+      <one-to-many class="com.shtz.model.Check"/>
+    </set>
+  </class>
+</hibernate-mapping>
